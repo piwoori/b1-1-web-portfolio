@@ -11,17 +11,21 @@ GitHub REST API를 활용하여 사용자의 Repository 정보를 동적으로 �
   - Mobile First
   - Tablet: 768px
   - Desktop: 1024px
+
 - 모바일 햄버거 메뉴
 - 부드러운 섹션 이동
 - 스크롤 위치에 따른 Header 스타일 변경
 - Scroll To Top 버튼
 - Intersection Observer를 활용한 스크롤 애니메이션
+
 - Dark Mode
   - LocalStorage를 활용한 테마 상태 저장
+
 - Contact Form 유효성 검사
   - 필수값 검증
   - 이메일 형식 검증
   - 실시간 입력 검증
+
 - GitHub REST API 연동
   - Repository 목록 동적 렌더링
   - Loading / Error / Empty 상태 처리
@@ -35,6 +39,7 @@ GitHub REST API를 활용하여 사용자의 Repository 정보를 동적으로 �
   - Grid
   - CSS Variables
   - Media Queries
+
 - JavaScript (ES6+)
   - DOM API
   - Event Handling
@@ -42,26 +47,37 @@ GitHub REST API를 활용하여 사용자의 Repository 정보를 동적으로 �
   - Async / Await
   - LocalStorage
   - Intersection Observer
+
 - Git / GitHub
 - GitHub Pages
 
 ## 프로젝트 구조
 
-    b1-1-web-portfolio/
-    ├── index.html
-    ├── css/
-    │   └── style.css
-    ├── js/
-    │   └── main.js
-    ├── images/
-    │   └── profile.jpg
-    └── README.md
+```text
+b1-1-web-portfolio/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── images/
+│   ├── profile.jpg
+│   ├── desktop.png
+│   ├── desktop-2.png
+│   ├── desktop-3.png
+│   ├── desktop-4.png
+│   ├── mobile.png
+│   └── dark.png
+└── README.md
+```
 
 ## GitHub API
 
 GitHub REST API를 사용하여 Repository 정보를 불러옵니다.
 
-    GET https://api.github.com/users/{username}/repos
+```text
+GET https://api.github.com/users/{username}/repos
+```
 
 API 요청 과정에서 다음 상태를 구분하여 UI에 반영했습니다.
 
@@ -74,29 +90,40 @@ API 요청 과정에서 다음 상태를 구분하여 UI에 반영했습니다.
 
 사용자의 이벤트에 따라 상태를 변경하고 DOM에 결과를 반영하도록 구현했습니다.
 
-- Dark Mode
-  - 테마 변경 → LocalStorage 저장 → 화면 테마 변경
-- GitHub Projects
-  - API 요청 → 결과 상태 확인 → 프로젝트 목록 또는 상태 메시지 렌더링
-- Contact Form
-  - 사용자 입력 → 유효성 검사 → 오류 또는 성공 메시지 렌더링
+### Dark Mode
+
+테마 변경 → LocalStorage 저장 → 화면 테마 변경
+
+### GitHub Projects
+
+API 요청 → 결과 상태 확인 → 프로젝트 목록 또는 상태 메시지 렌더링
+
+### Contact Form
+
+사용자 입력 → 유효성 검사 → 오류 또는 성공 메시지 렌더링
 
 ## 배포
 
 GitHub Pages를 통해 배포했습니다.
 
-- Deploy URL: 배포 후 추가 예정
+- Deploy URL: https://piwoori.github.io/b1-1-web-portfolio/
 
 ## Screenshots
 
 ### Desktop
 
-배포 후 이미지 추가 예정
+<img src="images/desktop.png" alt="Desktop 화면" width="800">
+
+<img src="images/desktop-2.png" alt="Desktop 화면2" width="800">
+
+<img src="images/desktop-3.png" alt="Desktop 화면3" width="800">
+
+<img src="images/desktop-4.png" alt="Desktop 화면4" width="800">
 
 ### Mobile
 
-배포 후 이미지 추가 예정
+<img src="images/mobile.png" alt="Mobile 화면" width="375">
 
 ### Dark Mode
 
-배포 후 이미지 추가 예정
+<img src="images/dark.png" alt="Dark Mode 화면" width="800">
