@@ -43,7 +43,7 @@ const renderProjects = (projects) => {
 const loadProjects = async () => {
   projectStatus.textContent = '프로젝트를 불러오는 중...';
   projectList.innerHTML = '';
-  retryButton.style.display = 'none';
+  retryButton.classList.add('visible');
 
   try {
     const response = await fetch(
@@ -59,7 +59,7 @@ const loadProjects = async () => {
     renderProjects(projects);
   } catch (error) {
     projectStatus.textContent = '프로젝트를 불러올 수 없습니다.';
-    retryButton.style.display = 'inline-block';
+    retryButton.classList.add('visible');
 
     console.error(error);
   }
@@ -73,6 +73,10 @@ menuToggle.addEventListener('click', () => {
   const isOpen = navMenu.classList.toggle('active');
 
   menuToggle.setAttribute('aria-expanded', isOpen);
+  menuToggle.setAttribute(
+    'aria-label',
+    isOpen ? '메뉴 닫기' : '메뉴 열기'
+  );
 
   menuToggle.textContent = isOpen ? '✕' : '☰';
 });
@@ -92,6 +96,7 @@ navLinks.forEach((link) => {
 
     navMenu.classList.remove('active');
     menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', '메뉴 열기');
     menuToggle.textContent = '☰';
   });
 });
@@ -236,11 +241,10 @@ emailInput.addEventListener('input', () => {
   const email = emailInput.value.trim();
 
   if (email === '') {
-    emailError.textContent = '';
-    return;
-  }
-
-  if (isValidEmail(email)) {
+    emailError.textContent = '이메일을 입력해주세요.';
+  } else if (!isValidEmail(email)) {
+    emailError.textContent = '올바른 이메일 형식을 입력해주세요.';
+  } else {
     emailError.textContent = '';
   }
 });
