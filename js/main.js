@@ -70,7 +70,30 @@ retryButton.addEventListener('click', loadProjects);
 loadProjects();
 
 menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
+  const isOpen = navMenu.classList.toggle('active');
+
+  menuToggle.setAttribute('aria-expanded', isOpen);
+
+  menuToggle.textContent = isOpen ? '✕' : '☰';
+});
+
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const targetId = link.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+
+    targetSection.scrollIntoView({
+      behavior: 'smooth'
+    });
+
+    navMenu.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '☰';
+  });
 });
 
 const themeToggle = document.querySelector('#theme-toggle');
