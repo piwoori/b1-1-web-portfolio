@@ -195,47 +195,130 @@ h2 {
 }
 
 /* =========================
+   About
+========================= */
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+}
+
+.about-image {
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.about-text {
+  max-width: 700px;
+}
+
+.about-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* =========================
+   Skills
+========================= */
+.skills {
+  background-color: var(--color-secondary);
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.skill-card {
+  padding: var(--spacing-lg);
+
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.skill-card h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+}
+
+.skill-card li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* =========================
    Responsive
 ========================= */
 @media (max-width: 767px) {
-  .menu-toggle {
+    .menu-toggle {
     display: block;
-  }
+    }
 
-  .nav-menu {
-    display: none;
+    .nav-menu {
+        display: none;
 
-    position: absolute;
-    top: 100%;
-    left: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
 
-    width: 100%;
-    padding: var(--spacing-md);
+        width: 100%;
+        padding: var(--spacing-md);
 
-    flex-direction: column;
-    gap: var(--spacing-md);
+        flex-direction: column;
+        gap: var(--spacing-md);
 
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border);
-  }
+        background-color: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+    }
 
-  .nav-menu.active {
-    display: flex;
-  }
+    .nav-menu.active {
+        display: flex;
+    }
 
-  .hero h1 {
-    font-size: 36px;
+    .hero h1 {
+        font-size: 36px;
     }
 
     .hero-description {
-    font-size: 16px;
+        font-size: 16px;
     }
 
     .hero-buttons {
-    flex-direction: column;
+        flex-direction: column;
     }
 
     .btn {
-    text-align: center;
+        text-align: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about-image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .skill-grid {
+        grid-template-columns: 1fr;
     }
 }
