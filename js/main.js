@@ -7,6 +7,8 @@ const retryButton = document.querySelector('#retry-button');
 const GITHUB_USERNAME = 'piwoori';
 
 const renderProjects = (projects) => {
+  retryButton.classList.remove('visible');
+
   if (projects.length === 0) {
     projectStatus.textContent = '표시할 프로젝트가 없습니다.';
     projectList.innerHTML = '';
@@ -43,7 +45,7 @@ const renderProjects = (projects) => {
 const loadProjects = async () => {
   projectStatus.textContent = '프로젝트를 불러오는 중...';
   projectList.innerHTML = '';
-  retryButton.classList.add('visible');
+  retryButton.classList.remove('visible');
 
   try {
     const response = await fetch(
