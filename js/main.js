@@ -53,17 +53,21 @@ const loadProjects = async () => {
     );
 
     if (!response.ok) {
-      throw new Error('GitHub API 요청 실패');
+      throw new Error(`GitHub API 요청 실패: ${response.status}`);
     }
 
     const projects = await response.json();
 
     renderProjects(projects);
+
+    // 성공 상태 확정
+    retryButton.classList.remove('visible');
   } catch (error) {
+    projectList.innerHTML = '';
     projectStatus.textContent = '프로젝트를 불러올 수 없습니다.';
     retryButton.classList.add('visible');
 
-    console.error(error);
+    console.error('GitHub API Error:', error);
   }
 };
 
