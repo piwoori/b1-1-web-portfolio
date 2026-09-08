@@ -65,3 +65,82 @@ section {
 h2 {
   margin-bottom: var(--spacing-lg);
 }
+
+/* =========================
+   Header / Navigation
+========================= */
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.nav-menu a {
+  transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+  color: var(--color-primary);
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    padding: var(--spacing-md);
+
+    flex-direction: column;
+    gap: var(--spacing-md);
+
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+}
