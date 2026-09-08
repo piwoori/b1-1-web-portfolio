@@ -225,3 +225,28 @@ contactForm.addEventListener('submit', (event) => {
 
   contactForm.reset();
 });
+
+nameInput.addEventListener('input', () => {
+  if (nameInput.value.trim() !== '') {
+    nameError.textContent = '';
+  }
+});
+
+emailInput.addEventListener('input', () => {
+  const email = emailInput.value.trim();
+
+  if (email === '') {
+    emailError.textContent = '';
+    return;
+  }
+
+  if (isValidEmail(email)) {
+    emailError.textContent = '';
+  }
+});
+
+messageInput.addEventListener('input', () => {
+  if (messageInput.value.trim() !== '') {
+    messageError.textContent = '';
+  }
+});

@@ -520,3 +520,39 @@ h2 {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================
+   Tablet
+========================= */
+@media (min-width: 768px) {
+  section {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   Desktop
+========================= */
+@media (min-width: 1024px) {
+  section {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
