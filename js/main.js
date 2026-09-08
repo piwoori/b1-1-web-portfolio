@@ -142,3 +142,63 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
+
+const contactForm = document.querySelector('#contact-form');
+
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const messageInput = document.querySelector('#message');
+
+const nameError = document.querySelector('#name-error');
+const emailError = document.querySelector('#email-error');
+const messageError = document.querySelector('#message-error');
+
+const formSuccess = document.querySelector('#form-success');
+
+const isValidEmail = (email) => {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+};
+
+const validateForm = () => {
+  let isValid = true;
+
+  nameError.textContent = '';
+  emailError.textContent = '';
+  messageError.textContent = '';
+  formSuccess.textContent = '';
+
+  if (nameInput.value.trim() === '') {
+    nameError.textContent = '이름을 입력해주세요.';
+    isValid = false;
+  }
+
+  if (emailInput.value.trim() === '') {
+    emailError.textContent = '이메일을 입력해주세요.';
+    isValid = false;
+  } else if (!isValidEmail(emailInput.value.trim())) {
+    emailError.textContent = '올바른 이메일 형식을 입력해주세요.';
+    isValid = false;
+  }
+
+  if (messageInput.value.trim() === '') {
+    messageError.textContent = '메시지를 입력해주세요.';
+    isValid = false;
+  }
+
+  return isValid;
+};
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const isValid = validateForm();
+
+  if (!isValid) {
+    return;
+  }
+
+  formSuccess.textContent = '메시지가 정상적으로 작성되었습니다.';
+
+  contactForm.reset();
+});
