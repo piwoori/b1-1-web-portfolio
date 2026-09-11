@@ -18,6 +18,7 @@ const STATE = {
 /* =========================
    Project Rendering
 ========================= */
+// 구조 분해 할당
 const renderProjects = (projects) => {
   projectList.innerHTML = projects
     .map((project) => {
