@@ -102,6 +102,34 @@ API 요청 → 결과 상태 확인 → 프로젝트 목록 또는 상태 메시
 
 사용자 입력 → 유효성 검사 → 오류 또는 성공 메시지 렌더링
 
+## 레이아웃 설계 기준
+
+### Flexbox
+
+Navigation, Hero 버튼, About, Footer처럼 한 방향으로 요소를 정렬하는 영역에는 Flexbox를 사용했습니다.
+
+`align-items`, `justify-content`, `flex-direction`을 활용하여 요소의 정렬 방향과 간격을 쉽게 제어할 수 있기 때문에 적용했습니다.
+
+### CSS Grid
+
+Skills와 Projects처럼 여러 개의 카드를 행과 열 형태로 배치하는 영역에는 CSS Grid를 사용했습니다.
+
+특히 Projects 영역은 `auto-fit`과 `minmax()`를 사용하여 화면 너비에 따라 카드의 열 개수가 자동으로 변경되도록 구현했습니다.
+
+## 상태 관리 흐름
+
+GitHub Repository 데이터를 불러오는 기능은 `STATE` 객체를 통해 상태를 관리합니다.
+
+```text
+사용자 이벤트 또는 API 요청
+        ↓
+STATE 변경
+        ↓
+renderProjectState()
+        ↓
+DOM 업데이트
+```
+
 ## 배포
 
 GitHub Pages를 통해 배포했습니다.
