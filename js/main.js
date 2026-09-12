@@ -3,7 +3,10 @@ const navMenu = document.querySelector('.nav-menu');
 
 const projectList = document.querySelector('#project-list');
 const projectStatus = document.querySelector('#project-status');
+const projectFilters = document.querySelector('#project-filters');
 const retryButton = document.querySelector('#retry-button');
+
+let allProjects = [];
 
 const GITHUB_USERNAME = 'piwoori';
 
@@ -12,14 +15,13 @@ const GITHUB_USERNAME = 'piwoori';
 ========================= */
 const STATE = {
   projects: [],
-  projectStatus: 'idle'
+  projectStatus: 'idle',
+  errorMessage: ''
 };
 
 /* =========================
    Project Rendering
 ========================= */
-// 구조 분해 할당
-
 const renderProjects = (projects) => {
   projectList.innerHTML = projects
     .map((project) => {
@@ -37,6 +39,7 @@ const renderProjects = (projects) => {
           <p>${description ?? '프로젝트 설명이 없습니다.'}</p>
           <p>Language: ${language ?? 'Unknown'}</p>
           <p>Stars: ${stargazers_count}</p>
+
           <a
             href="${html_url}"
             target="_blank"
@@ -50,28 +53,119 @@ const renderProjects = (projects) => {
     .join('');
 };
 
+/* =========================
+   Project Filters
+========================= */
+const renderProjectFilters = (projects) => {
+  const languages = [
+    ...new Set(
+      projects
+        .map((project) => project.language)
+        .filter((language) => language !== null)
+    )
+  ].sort();
+
+  const filterOptions = ['all', ...languages];
+
+  projectFilters.innerHTML = '';
+
+  filterOptions.forEach((language, index) => {
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.className = 'project-filter-button';
+
+    button.textContent =
+      language === 'all'
+        ? '전체'
+        : language;
+
+    button.setAttribute(
+      'aria-pressed',
+      String(index === 0)
+    );
+
+    if (index === 0) {
+      button.classList.add('active');
+    }
+
+    button.addEventListener('click', () => {
+      const filterButtons =
+        document.querySelectorAll(
+          '.project-filter-button'
+        );
+
+      filterButtons.forEach((filterButton) => {
+        filterButton.classList.remove('active');
+
+        filterButton.setAttribute(
+          'aria-pressed',
+          'false'
+        );
+      });
+
+      button.classList.add('active');
+
+      button.setAttribute(
+        'aria-pressed',
+        'true'
+      );
+
+      const filteredProjects =
+        language === 'all'
+          ? allProjects
+          : allProjects.filter(
+              (project) =>
+                project.language === language
+            );
+
+      renderProjects(filteredProjects);
+    });
+
+    projectFilters.appendChild(button);
+  });
+};
+
+/* =========================
+   Project State Rendering
+========================= */
 const renderProjectState = () => {
   projectList.innerHTML = '';
   retryButton.classList.remove('visible');
 
   if (STATE.projectStatus === 'loading') {
-    projectStatus.textContent = '프로젝트를 불러오는 중...';
+    projectFilters.innerHTML = '';
+
+    projectStatus.textContent =
+      '프로젝트를 불러오는 중...';
+
     return;
   }
 
   if (STATE.projectStatus === 'error') {
-    projectStatus.textContent = '프로젝트를 불러올 수 없습니다.';
+    projectFilters.innerHTML = '';
+
+    projectStatus.textContent =
+      '프로젝트를 불러올 수 없습니다.';
+
     retryButton.classList.add('visible');
+
     return;
   }
 
   if (STATE.projectStatus === 'empty') {
-    projectStatus.textContent = '표시할 프로젝트가 없습니다.';
+    projectFilters.innerHTML = '';
+
+    projectStatus.textContent =
+      '표시할 프로젝트가 없습니다.';
+
     return;
   }
 
   if (STATE.projectStatus === 'success') {
     projectStatus.textContent = '';
+
+    renderProjectFilters(STATE.projects);
     renderProjects(STATE.projects);
   }
 };
@@ -81,6 +175,8 @@ const renderProjectState = () => {
 ========================= */
 const loadProjects = async () => {
   STATE.projectStatus = 'loading';
+  STATE.errorMessage = '';
+
   renderProjectState();
 
   try {
@@ -100,6 +196,7 @@ const loadProjects = async () => {
       (project) => !project.fork
     );
 
+    allProjects = filteredProjects;
     STATE.projects = filteredProjects;
 
     STATE.projectStatus =
@@ -109,6 +206,8 @@ const loadProjects = async () => {
 
     renderProjectState();
   } catch (error) {
+    allProjects = [];
+
     STATE.projects = [];
     STATE.projectStatus = 'error';
     STATE.errorMessage = error.message;
@@ -119,7 +218,10 @@ const loadProjects = async () => {
   }
 };
 
-retryButton.addEventListener('click', loadProjects);
+retryButton.addEventListener(
+  'click',
+  loadProjects
+);
 
 loadProjects();
 
@@ -127,25 +229,35 @@ loadProjects();
    Mobile Navigation
 ========================= */
 menuToggle.addEventListener('click', () => {
-  const isOpen = navMenu.classList.toggle('active');
+  const isOpen =
+    navMenu.classList.toggle('active');
 
-  menuToggle.setAttribute('aria-expanded', isOpen);
   menuToggle.setAttribute(
-    'aria-label',
-    isOpen ? '메뉴 닫기' : '메뉴 열기' 
+    'aria-expanded',
+    String(isOpen)
   );
 
-  menuToggle.textContent = isOpen ? '✕' : '☰';
+  menuToggle.setAttribute(
+    'aria-label',
+    isOpen ? '메뉴 닫기' : '메뉴 열기'
+  );
+
+  menuToggle.textContent =
+    isOpen ? '✕' : '☰';
 });
 
-const navLinks = document.querySelectorAll('.nav-menu a');
+const navLinks =
+  document.querySelectorAll('.nav-menu a');
 
 navLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
 
-    const targetId = link.getAttribute('href');
-    const targetSection = document.querySelector(targetId);
+    const targetId =
+      link.getAttribute('href');
+
+    const targetSection =
+      document.querySelector(targetId);
 
     targetSection.scrollIntoView({
       behavior: 'smooth'
@@ -186,6 +298,13 @@ if (savedTheme) {
     savedTheme === 'dark'
       ? '☀️'
       : '🌙';
+
+  themeToggle.setAttribute(
+    'aria-label',
+    savedTheme === 'dark'
+      ? '라이트 모드로 전환'
+      : '다크 모드로 전환'
+  );
 }
 
 themeToggle.addEventListener('click', () => {
@@ -194,7 +313,10 @@ themeToggle.addEventListener('click', () => {
       'data-theme'
     );
 
-  const newTheme = currentTheme === 'dark'? 'light' : 'dark';
+  const newTheme =
+    currentTheme === 'dark'
+      ? 'light'
+      : 'dark';
 
   document.documentElement.setAttribute(
     'data-theme',
@@ -207,8 +329,16 @@ themeToggle.addEventListener('click', () => {
   );
 
   themeToggle.textContent =
-    newTheme === 'dark' ? '☀️' : '🌙';
+    newTheme === 'dark'
+      ? '☀️'
+      : '🌙';
 
+  themeToggle.setAttribute(
+    'aria-label',
+    newTheme === 'dark'
+      ? '라이트 모드로 전환'
+      : '다크 모드로 전환'
+  );
 });
 
 /* =========================
@@ -360,7 +490,8 @@ contactForm.addEventListener(
 
 nameInput.addEventListener('input', () => {
   if (nameInput.value.trim() === '') {
-    nameError.textContent = '이름을 입력해주세요.';
+    nameError.textContent =
+      '이름을 입력해주세요.';
   } else {
     nameError.textContent = '';
   }
@@ -383,7 +514,8 @@ emailInput.addEventListener('input', () => {
 
 messageInput.addEventListener('input', () => {
   if (messageInput.value.trim() === '') {
-    messageError.textContent = '메시지를 입력해주세요.';
+    messageError.textContent =
+      '메시지를 입력해주세요.';
   } else {
     messageError.textContent = '';
   }
