@@ -1,0 +1,248 @@
+1. <!DOCTYPE html>
+- 해당 문서가 HTML5 문서임을 알려주는 선언
+  - HTML5: HTML의 최신 규칙
+- 항상 파일 가장 위에 작성
+- 이 선언이 없으면 옛날 방식으로 화면을 해석할 수 있음
+- 닫는 태그: 없음
+
+2. <html lang="ko">
+- HTML 문서 전체를 감싸는 최상위 태그
+- 이 페이지의 주 언어가 한국어라는 뜻
+- 닫는 태그: </html>
+
+3. <head>
+- 페이지의 설정 정보를 넣는 영역
+- 이 태그의 내용 대부분은 화면에 직접 표시되지 않음
+- 닫는 태그: </head>
+
+4. <meta charset="UTF-8">
+- 이 파일에서 사용할 문자 인코딩 방식을 지정
+- 닫는 태그: 없음
+
+5. <meta name="viewport" content="width=device-width, initial-scale=1.0">
+- name="viewport"
+  - viewport: 사용자가 현재 보고 있는 화면 영역을 의미
+- width=device-width
+  - 페이지 너비를 기기의 실제 화면 너비에 맞춤
+- initial-scale=1.0
+  - 페이지를 처음 열었을 때 확대 축소 비율을 100%로 설정(반응형 웹에서는 필수)
+
+6. <title>
+- 브라우저 탭에 표시되는 페이지 제목
+- 화면 본문에 표시되는 것이 아닌 크롭 탭에 이름처럼 표시
+
+7. <link rel="stylesheet" href="css/style.css">
+- 현재 파일에 외부 CSS 파일을 연결하는 코드
+- <link>
+  - 현재 HTML과 외부 파일의 관계 연결
+- rel="stylesheet"
+  - 연결하는 파일이 스타일 시트(== CSS)라는 뜻
+- href="css/style.css"
+  - 연결할 CSS 파일의 경로
+
+8. <script src="js/main.js?v=2" defer></script>
+- 현재 HTML과 JavaScript 파일을 연결하는 코드
+- <script>
+  - JavaScript를 작성하거나 외부 JS 파일을 불러오는 태그
+- src="js/main.js?v=2"
+  - 실제로 실행할 JS 파일의 경로
+  - ?v=2: 브라우저에게 새로운 버전의 파일인 것처럼 인식시키는 표시
+    - 브라우저가 예전 main.js의 캐시를 가지고 있어도 새로운 파일을 다시 불러오도록 유도
+- defer
+  - HTML을 먼저 끝까지 읽고 나서 JavaScript를 실행하라고 말하는 속성
+  - 먼저 HTML 구조를 읽고 버튼 등의 요소를 생성한 뒤 main.js 실행 가능
+
+9. <body>
+- 웹페이지에서 사용자에게 실제로 보이는 내용을 넣는 영역
+
+10. <header class="header">
+- 페이지의 상단 영역을 나타내는 의미있는 태그
+- 실제 디자인은 CSS가 담당
+- class="header"
+  - class: HTML 요소에 이름표를 붙이는 속성
+  - CSS에서는 앞에 점.을 붙여서 해당 요소를 선택
+    - .은 class를 선택한다는 뜻
+- 닫는 태그: </header>
+
+11. <nav class="nav">
+- nav: 페이지 이동 링크들을 묶는 영역(navigation)
+
+12. <a href="#hero" class="logo">Piwoori</a>
+- a: 다른 위치로 이동할 수 있는 링크 태그 (anchor)
+- href="#hero": 내부 링크, 앵커 링크
+  - 링크를 눌렀을 때 이동할 위치를 지정
+  - #hero: 다른 웹사이트가 아니라, 현재 페이지에서 <section id="hero">를 찾으라는 뜻
+    - #은 id를 선택한다는 뜻
+      - id와 class의 차이
+        - id: 한 페이지에서 하나의 요소에만 사용하는 고유한 이름/ 여러 요소에 반복해서 사용하는 것을 지양
+        - class: 여러 요소에 반복해서 사용할 수 있음
+  - class="logo": 일반 메뉴와 다르게 꾸미기 위한 클래스
+
+13. <div class="nav-menu">
+- div: 여러 요소를 하나의 그룹으로 묶었을 때 사용하는 범용 컨테이너
+- 하나로 묶으면 CSS나 JavaScript에서 전체를 한 번에 다루기 편해짐
+- 닫는 태그: </div>
+
+14. <a href="#hero">Home</a>
+- 같은 페이지 안의 특정 id로 이동하는 링크
+- <section id="hero">로 이동 가능
+
+15. <button>
+- 사용자가 클릭할 수 있는 버튼을 만드는 태그
+- 닫는 태그: </button>
+- type="button"
+  - 이 버튼이 일반적인 클릭 버튼이라는 뜻
+  - button의 주요 타입
+    - button: 일반 클릭 버튼
+    - submit: 폼의 입력 내용을 제출
+    - reset: 폼의 입력 내용을 초기화
+- id="theme-toggle"
+  - 버튼에 고유한 이름 할당
+- class="theme-toggle"
+  - 이 버튼을 CSS로 꾸미기 위한 이름
+- aria-label="다크 모드 전환"
+  - 버튼의 목적을 화면 낭독기에 알려주는 접근성 속성
+    - 화면 낭독기: 화면의 글자와 버튼 등을 음성으로 읽어주는 프로그램
+    - 접근성 속성: HTML 요소의 의미나 현재 상태를 화면 낭독기와 같은 보조 기술에 전달하는 속성
+  - aria(Accessible Rich Internet Applications) 접근성 속성: 웹 요소의 역할, 이름, 상태를 화면 낭독기와 같은 보조 기술에 알려주는 접근성 규칙
+    - alt(이미지를 볼 수 없을 때 이미지 내용을 알려줌)와 같은 접근성 속성도 존재
+- aria-expanded="false"
+  - 연결된 메뉴가 열려 있는지를 나타내는 접근성 속성
+  - 현재 상태를 접근성 도구에 알려주는 역할
+
+16. <main>
+- 핵심 콘텐츠 전체를 감싸는 태그
+- 한 페이지에는 하나의 메인만 사용하는 것을 권장
+
+17. <section id="hero" class="hero">
+- <section>
+  - 페이지 내용을 주제별 영역으로 구분할 때 사용
+  - div는 단순한 묶음, section은 하나의 의미있는 주제 영역
+    - id="hero" class="hero"
+      - id와 class를 동시에 지정
+      - id="hero"
+        - 페이지 내용 이동에 사용
+        - #hero가 실행되면 이 섹션이 선택되거나 이 섹션으로 이동할 수 있음
+      - class="hero"
+        - CSS에서 Hero 영역을 디자인할 때 사용
+- <div class="hero-content">
+  - hero 안의 실제 컨텐츠를 하나로 묶는 컨테이너
+  - section.hero는 Hero 영역 전체를 담당하고, div.hero-content는 그 안의 글자와 버튼 묶음을 담당
+- <p class="hero-label">Backend Developer</p>
+  - <p>: 문단을 의미(paragraph)
+    - 일반적인 설명이나 문장 단위의 텍스트를 작성할 때 사용
+  - class="hero-label"
+    - 해당 문장을 디자인하기 위한 이름
+- <h1>
+  - 페이지에서 가장 중요한 최상위 제목
+  - 단순한 글자 크기를 정하는 것이 아닌 문서의 제목 계층을 표현하는 태그
+  - 닫는 태그: </h1>
+- <br>
+  - 줄바꿈을 의미(line break)
+  - 닫는 태그: 없음
+- <span>
+  - 문장 안에서 일부 글자만 따로 묶는 인라인 태그
+  - 묶은 문자들만 따로 CSS에서 이름만 다른 색상으로 표시할 수 있음
+  - div는 하나의 영역, span은 문장 안의 작은 영역
+- <p class="hero-description">
+  - 이 문단에만 전용 CSS 스타일을 적용하기 위해 클래스 붙임
+- <div class="hero-buttons">
+  - 버튼을 하나로 묶음
+  - 버튼 사이의 간격과 배치를 한 번에 지정하기 위함
+  - <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+    - 링크를 버튼처럼 사용한 것
+    - 클릭을 했을 때 특정 기능을 실행하는 것이 아니라 특정 영역으로 이동하기 때문에 링크가 적절
+    - href="#projects"
+      - href="#projects"로 이동하라는 뜻
+    - class="btn btn-primary"
+      - 하나의 요소에 클래스 두 개를 지정
+      - 클래스 이름 사이는 공백으로 구분
+- <img src="images/profile.jpg" alt="피우리 프로필 사진">
+  - src="images/profile.jpg"
+    - src: 불러올 이미지 파일의 위치 (source)
+      - href는 연결하거나 이동할 위치
+      - src는 현재 문서에서 불러와 사용할 파일의 위치
+  - alt="피우리 프로필 사진"
+    - alt: 대체 텍스트 (alternative text)
+
+18. <article class="skill-card">
+- <article>
+  - 그 자체로 하나의 독립적인 내용 단위를 나타내는 시맨틱 태그
+  - 각 내용이 명확히 구분된 정보 단위라 아티클 사용
+
+19. <ul>
+- 순서가 없는 목록 (unordered list)
+- 순서가 중요한 목록이라면 <ol>을 사용
+
+20. <li>
+- 목록의 각 항목 (list item)
+- li는 ul이나 ol 안에 작성
+
+21. <div id="project-list" class="project-grid"></div>
+- <div ...></div>
+  - HTML 작성 시점에는 프로젝트 카드가 들어 있지 않다는 뜻
+  - avaScript가 GitHub API로 프로젝트 정보를 받아서 이 div 안에 HTML을 동적으로 추가
+- project-status와 project-list의 차이
+  - project-status: 로딩이나 오류 상태 메시지를 표시
+  - project-list: 프로젝트 카드들을 표시
+
+22. <form id="contact-form" novalidate>
+- <form>
+  - 사용자에게 정보를 입력받고 제출하는 영역
+  - 폼 전체를 선택해서 제출 이벤트를 처리할 수 있음
+- novalidate
+  - 브라우저가 기본으로 제공하는 입력값 검사를 사용하지 않겠다는 뜻
+  - HTML의 원래 입력값 검증 기능
+    - HTML에는 원래 입력값 검증 기능
+      - <input type="email" required>
+  - required처럼 값 없이 존재 자체로 의미를 가지는 속성
+
+23. <label for="name">이름</label>
+- <label>
+  - 입력창이 어떤 정보를 받는지 설명하는 태그
+  - 입력창과 의미적으로 연결\
+  - 닫는 태그: </label>
+- for="name"
+  - <input id="name">과 연결
+
+24. <input type="text" id="name" name="name" required>
+- <input>
+  - 사용자가 한 줄의 값을 입력할 수 있는 입력창
+  - 닫는 태그: 없음
+- type="text"
+  - 일반 문자열을 입력받는 입력창
+  - text, emial, password, number, date, checkbox 의 타입이 있음
+- id와 name
+  - id: 현재 HTML 문서에서 특정 요소를 식별
+  - name: 폼을 제출할 때 해당 입력값의 이름으로 사용
+- required
+  - 반드시 입력해야 하는 필수 항목이라는 뜻
+
+25. <p class="error-message" id="email-error"></p>
+- <p></p>
+  - 처음에는 비어있는 문단
+
+26. <textarea id="message" name="message" required></textarea>
+- <textarea>
+  - 여러 줄의 긴 글을 입력받는 태그
+  - 닫는 태그: </textarea>
+  - input: 기본적으로 한 줄 입력
+  - textarea: 여러 줄 입력
+
+27. <footer class="footer">
+- <footer>
+  - 페이지의 하단 정보 영역을 나타내는 시맨틱 태그
+
+28. <a href="https://github.com/piwoori" target="_blank" rel="noopener noreferrer">GitHub</a>
+- rel="noopener noreferrer"
+  - 클릭하면 현재 페이지 안의 특정 섹션이 아니라 외부 GitHub 페이지로 이동
+- target="_blank"
+  - 링크를 새 탭에서 열라는 뜻
+  - 이 속성이 없다면 현재 포트폴리오 페이지가 GitHub 페이지로 바뀌게 됨
+- rel="noopener noreferrer"
+  - 외부 페이지를 열 때 보안과 개인정보 보호를 위해 함께 사용하는 속성
+  - rel은 relationship(관계)의 줄임말
+  - noopener
+    - 새로 열린 페이지가 원래 포트폴리오 페이지를 JavaScript로 조작하지 못하도록 관계를 차단
+  - noreferrer
+    - 외부 페이지에 현재 페이지의 주소 정보를 전달하지 않도록 함
