@@ -1,208 +1,204 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Piwoori Portfolio</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piwoori Portfolio</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js?v=2" defer></script>
-</head>
-<body>
-
-  <header class="header">
-    <nav class="nav">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js?v=2" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
         <a href="#hero" class="logo">Piwoori</a>
 
         <div class="nav-menu">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
 
-        <button
+          <button
             type="button"
             id="theme-toggle"
             class="theme-toggle"
             aria-label="다크 모드 전환"
-        >
+          >
             🌙
-        </button>
+          </button>
         </div>
 
         <button
-        type="button"
-        class="menu-toggle"
-        aria-label="메뉴 열기"
-        aria-expanded="false"
+          type="button"
+          class="menu-toggle"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
         >
-        ☰
+          ☰
         </button>
-    </nav>
-  </header>
+      </nav>
+    </header>
 
-  <main>
-
-    <section id="hero" class="hero">
+    <main>
+      <section id="hero" class="hero">
         <div class="hero-content">
-            <p class="hero-label">Backend Developer</p>
+          <p class="hero-label">Backend Developer</p>
 
-            <h1>
-                안녕하세요.<br>
-                개발자 <span>피우리</span>입니다.
-            </h1>
+          <h1>
+            안녕하세요.<br>
+            개발자 <span>피우리</span>입니다.
+          </h1>
 
-            <p class="hero-description">
-                사용자에게 필요한 기능을 고민하고,
-                안정적인 서비스를 구현하는 개발자를 목표로 하고 있습니다.
+          <p class="hero-description">
+            사용자에게 필요한 기능을 고민하고,
+            안정적인 서비스를 구현하는 개발자를 목표로 하고 있습니다.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about reveal">
+        <h2>About Me</h2>
+
+        <div class="about-content">
+          <div class="about-image">
+            <img src="images/profile.jpg" alt="피우리 프로필 사진">
+          </div>
+
+          <div class="about-text">
+            <p>
+              컴퓨터공학을 전공하며 백엔드 개발과 AI 프로젝트를 경험했습니다.
             </p>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
-                <a href="#contact" class="btn btn-secondary">Contact</a>
-            </div>
+            <p>
+              기능을 단순히 구현하는 것보다,
+              사용자가 실제로 필요로 하는 흐름과 안정적인 구조를 고민하는 개발자가 되고자 합니다.
+            </p>
+
+            <p>
+              Java와 Spring Boot를 중심으로 백엔드 개발 역량을 쌓고 있으며,
+              다양한 프로젝트를 통해 문제 해결 경험을 확장하고 있습니다.
+            </p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="about" class="about reveal">
-    <h2>About Me</h2>
+      <section id="skills" class="skills reveal">
+        <h2>Skills</h2>
 
-    <div class="about-content">
-        <div class="about-image">
-        <img src="images/profile.jpg" alt="피우리 프로필 사진">
+        <div class="skill-grid">
+          <article class="skill-card">
+            <h3>Backend</h3>
+            <ul>
+              <li>Java</li>
+              <li>Spring Boot</li>
+              <li>Node.js</li>
+              <li>FastAPI</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Database</h3>
+            <ul>
+              <li>PostgreSQL</li>
+              <li>Redis</li>
+            </ul>
+          </article>
+
+          <article class="skill-card">
+            <h3>Tools</h3>
+            <ul>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>Docker</li>
+            </ul>
+          </article>
         </div>
+      </section>
 
-        <div class="about-text">
-        <p>
-            컴퓨터공학을 전공하며 백엔드 개발과 AI 프로젝트를 경험했습니다.
-        </p>
-
-        <p>
-            기능을 단순히 구현하는 것보다,
-            사용자가 실제로 필요로 하는 흐름과 안정적인 구조를 고민하는 개발자가 되고자 합니다.
-        </p>
-
-        <p>
-            Java와 Spring Boot를 중심으로 백엔드 개발 역량을 쌓고 있으며,
-            다양한 프로젝트를 통해 문제 해결 경험을 확장하고 있습니다.
-        </p>
-        </div>
-    </div>
-    </section>
-
-    <section id="skills" class="skills reveal">
-    <h2>Skills</h2>
-
-    <div class="skill-grid">
-        <article class="skill-card">
-        <h3>Backend</h3>
-        <ul>
-            <li>Java</li>
-            <li>Spring Boot</li>
-            <li>Node.js</li>
-            <li>FastAPI</li>
-        </ul>
-        </article>
-
-        <article class="skill-card">
-        <h3>Frontend</h3>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-        </ul>
-        </article>
-
-        <article class="skill-card">
-        <h3>Database</h3>
-        <ul>
-            <li>PostgreSQL</li>
-            <li>Redis</li>
-        </ul>
-        </article>
-
-        <article class="skill-card">
-        <h3>Tools</h3>
-        <ul>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Docker</li>
-        </ul>
-        </article>
-    </div>
-    </section>
-
-    <section id="projects" class="projects reveal">
+      <section id="projects" class="projects reveal">
         <h2>Projects</h2>
 
         <div id="project-status" class="project-status">
-            프로젝트를 불러오는 중...
+          프로젝트를 불러오는 중...
         </div>
 
         <div id="project-list" class="project-grid"></div>
 
         <button id="retry-button" class="retry-button" type="button">
-            다시 시도
+          다시 시도
         </button>
-    </section>
+      </section>
 
-    <section id="contact" class="reveal">
+      <section id="contact" class="reveal">
         <h2>Contact</h2>
 
         <form id="contact-form" novalidate>
-            <div class="form-group">
-                <label for="name">이름</label>
-                <input type="text" id="name" name="name" required>
-                <p class="error-message" id="name-error"></p>
-            </div>
+          <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" required>
+            <p class="error-message" id="name-error"></p>
+          </div>
 
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <input type="email" id="email" name="email" required>
-                <p class="error-message" id="email-error"></p>
-            </div>
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" required>
+            <p class="error-message" id="email-error"></p>
+          </div>
 
-            <div class="form-group">
-                <label for="message">메시지</label>
-                <textarea id="message" name="message" required></textarea>
-                <p class="error-message" id="message-error"></p>
-            </div>
+          <div class="form-group">
+            <label for="message">메시지</label>
+            <textarea id="message" name="message" required></textarea>
+            <p class="error-message" id="message-error"></p>
+          </div>
 
-            <button type="submit" class="btn btn-primary">
-                보내기
-            </button>
+          <button type="submit" class="btn btn-primary">
+            보내기
+          </button>
 
-            <p id="form-success" class="form-success"></p>
+          <p id="form-success" class="form-success"></p>
         </form>
-    </section>
+      </section>
+    </main>
 
-  </main>
+    <button
+      id="scroll-top"
+      class="scroll-top"
+      type="button"
+      aria-label="페이지 맨 위로 이동"
+    >
+      ↑
+    </button>
 
-  <button
-    id="scroll-top"
-    class="scroll-top"
-    type="button"
-    aria-label="페이지 맨 위로 이동"
-  >
-    ↑
-  </button>
-
-  <footer class="footer">
-    <div class="footer-content">
+    <footer class="footer">
+      <div class="footer-content">
         <p>© 2026 Piwoori. All rights reserved.</p>
 
         <div class="footer-links">
-        <a
+          <a
             href="https://github.com/piwoori"
             target="_blank"
             rel="noopener noreferrer"
-        >
+          >
             GitHub
-        </a>
+          </a>
         </div>
-    </div>
-  </footer>
-
-</body>
+      </div>
+    </footer>
+  </body>
 </html>

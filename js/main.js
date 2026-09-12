@@ -19,6 +19,7 @@ const STATE = {
    Project Rendering
 ========================= */
 // 구조 분해 할당
+
 const renderProjects = (projects) => {
   projectList.innerHTML = projects
     .map((project) => {
@@ -131,7 +132,7 @@ menuToggle.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', isOpen);
   menuToggle.setAttribute(
     'aria-label',
-    isOpen ? '메뉴 닫기' : '메뉴 열기'
+    isOpen ? '메뉴 닫기' : '메뉴 열기' 
   );
 
   menuToggle.textContent = isOpen ? '✕' : '☰';
@@ -193,10 +194,7 @@ themeToggle.addEventListener('click', () => {
       'data-theme'
     );
 
-  const newTheme =
-    currentTheme === 'dark'
-      ? 'light'
-      : 'dark';
+  const newTheme = currentTheme === 'dark'? 'light' : 'dark';
 
   document.documentElement.setAttribute(
     'data-theme',
@@ -209,9 +207,8 @@ themeToggle.addEventListener('click', () => {
   );
 
   themeToggle.textContent =
-    newTheme === 'dark'
-      ? '☀️'
-      : '🌙';
+    newTheme === 'dark' ? '☀️' : '🌙';
+
 });
 
 /* =========================
