@@ -359,7 +359,9 @@ contactForm.addEventListener(
 );
 
 nameInput.addEventListener('input', () => {
-  if (nameInput.value.trim() !== '') {
+  if (nameInput.value.trim() === '') {
+    nameError.textContent = '이름을 입력해주세요.';
+  } else {
     nameError.textContent = '';
   }
 });
@@ -379,11 +381,10 @@ emailInput.addEventListener('input', () => {
   }
 });
 
-messageInput.addEventListener(
-  'input',
-  () => {
-    if (messageInput.value.trim() !== '') {
-      messageError.textContent = '';
-    }
+messageInput.addEventListener('input', () => {
+  if (messageInput.value.trim() === '') {
+    messageError.textContent = '메시지를 입력해주세요.';
+  } else {
+    messageError.textContent = '';
   }
-);
+});
