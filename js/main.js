@@ -403,8 +403,13 @@ retryButton.addEventListener('click', loadProjects);
 
 contactForm.addEventListener('submit', handleContactSubmit);
 nameInput.addEventListener('input', validateNameInput);
+nameInput.addEventListener('blur', validateNameInput);
+
 emailInput.addEventListener('input', validateEmailInput);
+emailInput.addEventListener('blur', validateEmailInput);
+
 messageInput.addEventListener('input', validateMessageInput);
+messageInput.addEventListener('blur', validateMessageInput);
 
 /* =========================
    Initialization
