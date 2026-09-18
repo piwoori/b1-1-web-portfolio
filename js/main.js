@@ -257,6 +257,7 @@ const initializeTheme = () => {
   updateThemeButton(savedTheme);
 };
 
+// 현재 테마 확인 후 새로운 테마 결정
 const toggleTheme = () => {
   const currentTheme = document.documentElement.getAttribute(
     'data-theme'
